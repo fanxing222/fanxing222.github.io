@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model PostFeedItem {
+  id        String   @id @default(cuid())
+  content   String
+  tags      String   @default("") // Comma-separated
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([createdAt])
+}
+
+// Future models (interfaces defined, implement when needed):
+//
+// model User {
+//   id       String @id @default(cuid())
+//   name     String?
+//   email    String @unique
+//   image    String?
+//   role     String @default("USER")
+// }
+//
+// model Comment {
+//   id        String   @id @default(cuid())
+//   content   String
+//   postId    String
+//   userId    String
+//   createdAt DateTime @default(now())
+// }
