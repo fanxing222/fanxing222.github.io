@@ -4,8 +4,8 @@ export const siteConfig = {
   description:
     "别人训练 AI，我训练自己如何更懂你。\n" +
     "Building with code, dreaming with AI.\n",
-  url: "https://yourname.dev",
-  ogImage: "https://yourname.dev/images/og/default.png",
+  url: "https://fanxing222.github.io",
+  ogImage: "https://fanxing222.github.io/images/og/default.png",
   author: {
     name: "章高瑞",
     email: "18850696679@163.com",
@@ -15,10 +15,10 @@ export const siteConfig = {
   },
   navItems: [
     { label: "首页", href: "/" },
-    { label: "项目", href: "/projects" },
-    { label: "博客", href: "/blog" },
-    { label: "动态", href: "/posts" },
-    { label: "关于", href: "/about" },
+    { label: "项目", href: "/projects/" },
+    { label: "博客", href: "/blog/" },
+    { label: "动态", href: "/posts/" },
+    { label: "关于", href: "/about/" },
   ],
   status: "Open to Work",
 } as const;

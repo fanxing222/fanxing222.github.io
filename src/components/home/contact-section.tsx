@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { siteConfig } from "@/config/site";
 
 const contactSchema = z.object({
   name: z.string().min(2, "姓名至少 2 个字符"),
@@ -31,22 +32,19 @@ export function ContactSection() {
     resolver: zodResolver(contactSchema),
   });
 
+  // 静态站点无后端，改用 mailto 打开邮件客户端
   async function onSubmit(data: ContactForm) {
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error("提交失败");
-
-      setSubmitted(true);
-      reset();
-      toast.success("消息已发送，我会尽快回复！");
-    } catch {
-      toast.error("发送失败，请稍后重试");
-    }
+    const subject = encodeURIComponent("来自个人网站的留言");
+    const body = encodeURIComponent(
+      `姓名：${data.name}\n邮箱：${data.email}\n\n${data.message}`
+    );
+    window.open(
+      `mailto:${siteConfig.author.email}?subject=${subject}&body=${body}`,
+      "_blank"
+    );
+    setSubmitted(true);
+    reset();
+    toast.success("即将打开邮件客户端发送消息");
   }
 
   return (

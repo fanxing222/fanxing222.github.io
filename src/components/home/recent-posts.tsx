@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, Calendar, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -76,10 +77,10 @@ export function RecentPosts() {
         <AnimatedSection delay={0.3}>
           <div className="mt-10 text-center">
             <Button variant="outline" asChild>
-              <a href="/blog">
+              <Link href="/blog/">
                 查看全部文章
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              </Link>
             </Button>
           </div>
         </AnimatedSection>

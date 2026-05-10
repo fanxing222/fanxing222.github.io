@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Mail, Rss } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/shared/icons";
+import { Mail } from "lucide-react";
+import { GithubIcon } from "@/components/shared/icons";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -26,23 +26,17 @@ export function Footer() {
                 icon: GithubIcon,
                 label: "GitHub",
               },
-              //{
-              //  href: siteConfig.author,
-              //  icon: LinkedinIcon,
-              //  label: "LinkedIn",
-              //},
               {
                 href: `mailto:${siteConfig.author.email}`,
                 icon: Mail,
                 label: "Email",
               },
-              { href: "/api/feed", icon: Rss, label: "RSS Feed" },
             ].map(({ href, icon: Icon, label }) => (
               <Link
                 key={label}
                 href={href}
-                target={label !== "RSS Feed" ? "_blank" : undefined}
-                rel={label !== "RSS Feed" ? "noopener noreferrer" : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-all hover:bg-accent hover:text-foreground"
                 aria-label={label}
               >

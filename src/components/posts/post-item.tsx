@@ -44,7 +44,7 @@ export function PostItem({ post }: PostItemProps) {
           )}
 
           <div className="mt-3">
-            <LikeButton postId={post.id} initialLikes={post.likes} />
+            <LikeButton initialLikes={post.likes} />
           </div>
         </GlowCard>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, MapPin, Briefcase } from "lucide-react";
+import { MapPin, Briefcase } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -10,32 +10,7 @@ import { GithubIcon } from "@/components/shared/icons";
 import { siteConfig } from "@/config/site";
 import { skills } from "@/data/skills";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-
-const experience = [
-  {
-    title: "高级 Java 开发工程师",
-    company: "某科技公司",
-    period: "2023 - 至今",
-    description:
-      "负责核心微服务架构设计和开发，优化系统性能，带领团队完成多个关键项目。",
-  },
-  {
-    title: "Java 开发工程师",
-    company: "某互联网公司",
-    period: "2021 - 2023",
-    description:
-      "参与电商平台后端开发，负责订单系统和支付模块的设计与实现。",
-  },
-  {
-    title: "初级开发工程师",
-    company: "某软件公司",
-    period: "2019 - 2021",
-    description:
-      "参与企业级应用开发，学习和实践 Java 技术栈，积累项目经验。",
-  },
-];
 
 export default function AboutPage() {
   const languageSkills = skills.filter((s) => s.category === "language");
@@ -69,7 +44,6 @@ export default function AboutPage() {
               <Briefcase className="h-4 w-4" />
               <span>{siteConfig.status}</span>
             </div>
-            {/* 社交按钮区域 */}
             {/* 社交按钮区域 */}
             <div className="mt-6 flex gap-3">
 
@@ -107,30 +81,49 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* Experience */}
+        {/* Internship Experience */}
         <AnimatedSection delay={0.1}>
           <div className="mt-20">
-            <SectionHeading title="工作经历" className="text-left [&>div]:mx-0 [&>div]:mt-2" />
-            <div className="mt-2 space-y-4">
-              {experience.map((exp, index) => (
-                <GlowCard key={index}>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-heading font-semibold">{exp.title}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {exp.company}
-                      </p>
+            <SectionHeading
+              title="实习经历"
+              description="Internship Experience"
+              className="text-left [&>div]:mx-0 [&>div]:mt-2"
+            />
+            <div className="relative mt-10">
+              {/* Vertical timeline line */}
+              <div className="absolute left-[19px] top-3 bottom-3 w-px bg-gradient-to-b from-primary/25 via-border to-border/50" />
+
+              <div className="space-y-10">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="relative flex gap-6">
+                    {/* Timeline dot */}
+                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-border/70 bg-card shadow-sm">
+                      <div className="h-2.5 w-2.5 rounded-full bg-primary/20" />
                     </div>
-                    <span className="flex shrink-0 items-center gap-1 text-sm text-muted-foreground">
-                      <Calendar className="h-3 w-3" />
-                      {exp.period}
-                    </span>
+
+                    {/* Placeholder card */}
+                    <GlowCard className="flex-1">
+                      <div className="space-y-3">
+                        {/* Position title */}
+                        <div className="h-5 w-3/5 animate-pulse rounded-md bg-muted" />
+                        {/* Organization */}
+                        <div className="h-4 w-2/5 animate-pulse rounded-md bg-muted/70" />
+                        {/* Date */}
+                        <div className="flex items-center gap-2">
+                          <div className="h-3 w-3 animate-pulse rounded-full bg-muted/60" />
+                          <div className="h-3 w-20 animate-pulse rounded-sm bg-muted/60" />
+                        </div>
+                        {/* Description lines */}
+                        <div className="space-y-2 pt-1">
+                          <div className="h-3 w-full animate-pulse rounded-sm bg-muted/50" />
+                          <div className="h-3 w-5/6 animate-pulse rounded-sm bg-muted/50" />
+                          <div className="h-3 w-3/4 animate-pulse rounded-sm bg-muted/40" />
+                        </div>
+                      </div>
+                    </GlowCard>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {exp.description}
-                  </p>
-                </GlowCard>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </AnimatedSection>
