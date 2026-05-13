@@ -8,15 +8,17 @@ import { GlowCard } from "@/components/shared/glow-card";
 import { GradientText } from "@/components/shared/gradient-text";
 import { GithubIcon } from "@/components/shared/icons";
 import { siteConfig } from "@/config/site";
-import { skills } from "@/data/skills";
+import { skillCategories } from "@/data/skills";
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+
+function getIcon(name: string) {
+  const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[name];
+  return Icon ?? LucideIcons.Code;
+}
 
 export default function AboutPage() {
-  const languageSkills = skills.filter((s) => s.category === "language");
-  const frameworkSkills = skills.filter((s) => s.category === "framework");
-  const toolSkills = skills.filter((s) => s.category === "tool");
-
   return (
     <div className="py-20">
       <div className="container mx-auto max-w-4xl px-4">
@@ -46,37 +48,22 @@ export default function AboutPage() {
             </div>
             {/* 社交按钮区域 */}
             <div className="mt-6 flex gap-3">
-
-              {/* GitHub */}
               <Link
                 href={siteConfig.author.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-      inline-flex items-center rounded-md border
-      border-border bg-background px-4 py-2
-      text-sm font-medium transition-colors
-      hover:bg-accent hover:text-accent-foreground
-    "
+                className="inline-flex items-center rounded-md border border-border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 <GithubIcon className="mr-2 h-4 w-4" />
                 GitHub
               </Link>
-
-              {/* Email */}
               <Link
                 href={`mailto:${siteConfig.author.email}`}
-                className="
-      inline-flex items-center rounded-md border
-      border-border bg-background px-4 py-2
-      text-sm font-medium transition-colors
-      hover:bg-accent hover:text-accent-foreground
-    "
+                className="inline-flex items-center rounded-md border border-border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Email
               </Link>
-
             </div>
           </div>
         </AnimatedSection>
@@ -104,16 +91,12 @@ export default function AboutPage() {
                     {/* Placeholder card */}
                     <GlowCard className="flex-1">
                       <div className="space-y-3">
-                        {/* Position title */}
                         <div className="h-5 w-3/5 animate-pulse rounded-md bg-muted" />
-                        {/* Organization */}
                         <div className="h-4 w-2/5 animate-pulse rounded-md bg-muted/70" />
-                        {/* Date */}
                         <div className="flex items-center gap-2">
                           <div className="h-3 w-3 animate-pulse rounded-full bg-muted/60" />
                           <div className="h-3 w-20 animate-pulse rounded-sm bg-muted/60" />
                         </div>
-                        {/* Description lines */}
                         <div className="space-y-2 pt-1">
                           <div className="h-3 w-full animate-pulse rounded-sm bg-muted/50" />
                           <div className="h-3 w-5/6 animate-pulse rounded-sm bg-muted/50" />
@@ -132,40 +115,31 @@ export default function AboutPage() {
         <AnimatedSection delay={0.2}>
           <div className="mt-20">
             <SectionHeading title="技术栈" className="text-left [&>div]:mx-0 [&>div]:mt-2" />
-            <div className="mt-2 grid gap-6 md:grid-cols-3">
-              <GlowCard>
-                <h3 className="mb-4 font-heading font-semibold">编程语言</h3>
-                <div className="flex flex-wrap gap-2">
-                  {languageSkills.map((s) => (
-                    <Badge key={s.name} variant="secondary">
-                      <i className={`${s.icon} mr-1 text-base`} />
-                      {s.name}
-                    </Badge>
-                  ))}
-                </div>
-              </GlowCard>
-              <GlowCard>
-                <h3 className="mb-4 font-heading font-semibold">框架</h3>
-                <div className="flex flex-wrap gap-2">
-                  {frameworkSkills.map((s) => (
-                    <Badge key={s.name} variant="secondary">
-                      <i className={`${s.icon} mr-1 text-base`} />
-                      {s.name}
-                    </Badge>
-                  ))}
-                </div>
-              </GlowCard>
-              <GlowCard>
-                <h3 className="mb-4 font-heading font-semibold">工具</h3>
-                <div className="flex flex-wrap gap-2">
-                  {toolSkills.map((s) => (
-                    <Badge key={s.name} variant="secondary">
-                      <i className={`${s.icon} mr-1 text-base`} />
-                      {s.name}
-                    </Badge>
-                  ))}
-                </div>
-              </GlowCard>
+            <div className="mt-2 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {skillCategories.map((category) => {
+                const CategoryIcon = getIcon(category.icon);
+                return (
+                  <GlowCard key={category.name} variant="subtle">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                        <CategoryIcon className="h-4 w-4 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-semibold">{category.name}</h3>
+                        <p className="text-xs text-muted-foreground">{category.description}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((s) => (
+                        <Badge key={s.name} variant="secondary">
+                          <i className={`${s.icon} mr-1 text-base`} />
+                          {s.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </GlowCard>
+                );
+              })}
             </div>
           </div>
         </AnimatedSection>

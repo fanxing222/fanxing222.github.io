@@ -1,38 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { skills } from "@/data/skills";
+import * as LucideIcons from "lucide-react";
+import { skillCategories } from "@/data/skills";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { GlowCard } from "@/components/shared/glow-card";
 
-const categories = [
-  { key: "language", label: "编程语言" },
-  { key: "framework", label: "框架" },
-  { key: "tool", label: "工具" },
-] as const;
-
-function SkillBar({ name, icon, level }: { name: string; icon: string; level: number }) {
-  return (
-    <div className="flex items-center gap-3">
-      <i className={`${icon} text-xl text-muted-foreground`} />
-      <div className="flex-1">
-        <div className="mb-1.5 flex items-center justify-between">
-          <span className="text-sm font-medium">{name}</span>
-          <span className="text-xs tabular-nums text-muted-foreground">{level}%</span>
-        </div>
-        <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
-          <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-primary/80 to-primary"
-            initial={{ width: 0 }}
-            whileInView={{ width: `${level}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-          />
-        </div>
-      </div>
-    </div>
-  );
+function getIcon(name: string) {
+  const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[name];
+  return Icon ?? LucideIcons.Code;
 }
 
 export function SkillsSection() {
@@ -46,26 +22,37 @@ export function SkillsSection() {
           />
         </AnimatedSection>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {categories.map((cat, catIndex) => (
-            <AnimatedSection key={cat.key} delay={catIndex * 0.1}>
-              <GlowCard>
-                <h3 className="mb-6 font-heading text-lg font-semibold">{cat.label}</h3>
-                <div className="space-y-5">
-                  {skills
-                    .filter((s) => s.category === cat.key)
-                    .map((skill) => (
-                      <SkillBar
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((category, catIndex) => {
+            const CategoryIcon = getIcon(category.icon);
+            return (
+              <AnimatedSection key={category.name} delay={catIndex * 0.08}>
+                <GlowCard variant="subtle">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                      <CategoryIcon className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold">{category.name}</h3>
+                      <p className="text-xs text-muted-foreground">{category.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <div
                         key={skill.name}
-                        name={skill.name}
-                        icon={skill.icon}
-                        level={skill.level}
-                      />
+                        className="flex items-center gap-1.5 rounded-md border border-border/30 px-2.5 py-1.5 text-xs transition-colors hover:border-border hover:bg-muted/50"
+                      >
+                        <i className={`${skill.icon} text-sm text-muted-foreground`} />
+                        <span>{skill.name}</span>
+                      </div>
                     ))}
-                </div>
-              </GlowCard>
-            </AnimatedSection>
-          ))}
+                  </div>
+                </GlowCard>
+              </AnimatedSection>
+            );
+          })}
         </div>
       </div>
     </section>

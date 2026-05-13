@@ -16,6 +16,7 @@ export function Header() {
         {/* Logo */}
         <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-lg font-bold text-transparent">
           ZGR.dev
+          
         </span>
 
         {/* Desktop Navigation */}

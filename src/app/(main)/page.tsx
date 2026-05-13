@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { SkillsSection } from "@/components/home/skills-section";
+import { ArchitectureSection } from "@/components/home/architecture-section";
 import { RecentPosts } from "@/components/home/recent-posts";
 import { ContactSection } from "@/components/home/contact-section";
 
@@ -10,6 +11,7 @@ export default function HomePage() {
       <HeroSection />
       <FeaturedProjects />
       <SkillsSection />
+      <ArchitectureSection />
       <RecentPosts />
       <ContactSection />
     </>
