@@ -61,7 +61,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 text-xl text-muted-foreground sm:text-2xl"
         >
-          正在学习全栈开发的学生开发者
+          用代码与 AI 构建未来体验的开发者
         </motion.p>
 
         {/* Description */}
