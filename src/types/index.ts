@@ -61,15 +61,6 @@ export interface SkillCategory {
 export interface SkillItem {
   name: string;
   icon: string; // devicon class
-  level?: number; // 0-100 (optional, kept for backward compat)
-}
-
-// 旧版技能类型（向后兼容） / Legacy skill type
-export interface Skill {
-  name: string;
-  icon: string;
-  level: number;
-  category: "language" | "framework" | "tool";
 }
 
 export interface PostFeedItem {

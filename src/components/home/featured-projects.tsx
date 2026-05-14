@@ -17,7 +17,7 @@ export function FeaturedProjects() {
         <AnimatedSection>
           <SectionHeading
             title="项目展示"
-            description="我参与开发的一些代表性项目"
+            description="我在学习过程中完成的一些项目"
           />
         </AnimatedSection>
 

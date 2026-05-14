@@ -19,7 +19,7 @@ export function ArchitectureSection() {
         <AnimatedSection>
           <SectionHeading
             title="系统架构"
-            description="我的典型技术栈架构流程"
+            description="我正在学习的技术栈架构"
           />
         </AnimatedSection>
 

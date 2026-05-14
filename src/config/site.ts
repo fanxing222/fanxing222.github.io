@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "章高瑞",
-  title: "章高瑞 | 用代码与 AI 构建未来体验的开发者",
+  title: "章高瑞 | 持续学习中的开发者",
   description:
-    "别人训练 AI，我训练自己如何更懂你。\n" +
+    "正在从前端基础过渡到后端开发，持续学习中。\n" +
     "Building with code, dreaming with AI.\n",
   url: "https://fanxing222.github.io",
   ogImage: "https://fanxing222.github.io/images/og/default.png",

@@ -18,7 +18,7 @@ export function SkillsSection() {
         <AnimatedSection>
           <SectionHeading
             title="技术栈"
-            description="我日常使用的技术和工具"
+            description="我正在学习和使用的技术"
           />
         </AnimatedSection>
 

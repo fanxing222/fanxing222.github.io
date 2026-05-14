@@ -68,12 +68,12 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* Internship Experience */}
+        {/* Learning Journey */}
         <AnimatedSection delay={0.1}>
           <div className="mt-20">
             <SectionHeading
-              title="实习经历"
-              description="Internship Experience"
+              title="学习成长"
+              description="Learning Journey"
               className="text-left [&>div]:mx-0 [&>div]:mt-2"
             />
             <div className="relative mt-10">
@@ -81,31 +81,68 @@ export default function AboutPage() {
               <div className="absolute left-[19px] top-3 bottom-3 w-px bg-gradient-to-b from-primary/25 via-border to-border/50" />
 
               <div className="space-y-10">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="relative flex gap-6">
-                    {/* Timeline dot */}
-                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-border/70 bg-card shadow-sm">
-                      <div className="h-2.5 w-2.5 rounded-full bg-primary/20" />
-                    </div>
-
-                    {/* Placeholder card */}
-                    <GlowCard className="flex-1">
-                      <div className="space-y-3">
-                        <div className="h-5 w-3/5 animate-pulse rounded-md bg-muted" />
-                        <div className="h-4 w-2/5 animate-pulse rounded-md bg-muted/70" />
-                        <div className="flex items-center gap-2">
-                          <div className="h-3 w-3 animate-pulse rounded-full bg-muted/60" />
-                          <div className="h-3 w-20 animate-pulse rounded-sm bg-muted/60" />
-                        </div>
-                        <div className="space-y-2 pt-1">
-                          <div className="h-3 w-full animate-pulse rounded-sm bg-muted/50" />
-                          <div className="h-3 w-5/6 animate-pulse rounded-sm bg-muted/50" />
-                          <div className="h-3 w-3/4 animate-pulse rounded-sm bg-muted/40" />
-                        </div>
-                      </div>
-                    </GlowCard>
+                {/* 1. 前端基础入门 */}
+                <div className="relative flex gap-6">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-border/70 bg-card shadow-sm">
+                    <div className="h-2.5 w-2.5 rounded-full bg-primary/60" />
                   </div>
-                ))}
+                  <GlowCard className="flex-1">
+                    <div className="space-y-2">
+                      <h3 className="text-sm font-semibold">前端基础入门</h3>
+                      <p className="text-xs text-muted-foreground">过去几个月</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        系统学习了 HTML、CSS、JavaScript 三件套，做了一些基础页面和交互练习。通过实际动手写页面，对前端开发有了基本的理解。
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        <Badge variant="secondary" className="text-xs">HTML</Badge>
+                        <Badge variant="secondary" className="text-xs">CSS</Badge>
+                        <Badge variant="secondary" className="text-xs">JavaScript</Badge>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </div>
+
+                {/* 2. 项目实战 */}
+                <div className="relative flex gap-6">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-border/70 bg-card shadow-sm">
+                    <div className="h-2.5 w-2.5 rounded-full bg-primary/40" />
+                  </div>
+                  <GlowCard className="flex-1">
+                    <div className="space-y-2">
+                      <h3 className="text-sm font-semibold">项目实战</h3>
+                      <p className="text-xs text-muted-foreground">近期</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        用 Next.js 搭建了个人网站，用 Django 完成了文件管理系统。在项目中学到了前后端交互、数据库操作和部署上线的完整流程。
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        <Badge variant="secondary" className="text-xs">Next.js</Badge>
+                        <Badge variant="secondary" className="text-xs">Django</Badge>
+                        <Badge variant="secondary" className="text-xs">Docker</Badge>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </div>
+
+                {/* 3. 后端深入学习 */}
+                <div className="relative flex gap-6">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-border/70 bg-card shadow-sm">
+                    <div className="h-2.5 w-2.5 rounded-full bg-primary/20" />
+                  </div>
+                  <GlowCard className="flex-1">
+                    <div className="space-y-2">
+                      <h3 className="text-sm font-semibold">后端深入学习</h3>
+                      <p className="text-xs text-muted-foreground">最近 · 进行中</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        正在学习 Spring Boot 和 MySQL，逐步搭建 Java Web 开发的知识体系。重点关注数据库设计、SQL 语句和前后端交互流程。
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        <Badge variant="secondary" className="text-xs">Java</Badge>
+                        <Badge variant="secondary" className="text-xs">Spring Boot</Badge>
+                        <Badge variant="secondary" className="text-xs">MySQL</Badge>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </div>
               </div>
             </div>
           </div>
